@@ -165,7 +165,7 @@ static int glad_gl_find_core_{{ api|lower }}({{ template_utils.context_arg(def='
     GLAD_IMPL_UTIL_SSCANF(version, "%d.%d", &major, &minor);
 
 {% for feature in feature_set.features|select('supports', api) %}
-    {{ ('GLAD_' + feature.name)|ctx(name_only=True) }} = (major == {{ feature.version.major }} && minor >= {{ feature.version.minor }}) || major > {{ feature.version.major }};
+    {{ ('GLAD_' + feature.name)|ctx(name_only=True) }} = 1;
 {% endfor %}
 
     return GLAD_MAKE_VERSION(major, minor);
